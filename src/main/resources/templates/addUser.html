@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Add user</title>
+    <meta charset="UTF-8">
+</head>
+<body>
+
+<h1>Add User</h1>
+
+<form action="#" th:action="@{/addUser}" th:object="${user}" method="post">
+    <!-- th taggar börjar med th:
+    Action blir POST till URL /addUser, dit objektet user kommer skickas
+     ${user} definierar en bean, som vi kan använda i formuläret
+     Namnet måste vara samma Spring bean namnet för klassen
+    Det är samma som den aktuella klassen, men med små bokstäver
+    Om inget annat namn definieras i User
+     -->
+    <p>
+        Name: <input type="text" th:field="*{name}">
+        <!-- *{} syntax:  referense till vår definierade user-bean
+         då kan vi hämta värden på attributen från denna bean-->
+    </p>
+    <p>
+        Occupation: <input type="text" th:field="*{occupation}">
+    </p>
+    <p>
+        <input type="submit" value="Submit"/> <input type="reset" value="Reset">
+    </p>
+</form>
+
+</body>
+</html>
